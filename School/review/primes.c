@@ -7,7 +7,7 @@ void findPrimeArithmeticSequences(int N1, int N2, int LENGTH);
 
 int main() {
     int N1, N2, LENGTH;
-    printf("Enter N1 N2 LENGTH (separated by whitespace): ");
+
     scanf("%d %d %d", &N1, &N2, &LENGTH);
 
     findPrimeArithmeticSequences(N1, N2, LENGTH);
@@ -26,6 +26,8 @@ bool isPrime(int num) {
 }
 
 void findPrimeArithmeticSequences(int N1, int N2, int LENGTH) {
+    int flag = 0;
+
     for (int a = N1; a <= N2; a++) {
         for (int b = a + 1; b <= N2; b++) {
             if (isPrime(a) && isPrime(b)) {
@@ -38,6 +40,7 @@ void findPrimeArithmeticSequences(int N1, int N2, int LENGTH) {
                         count++;
                     }
                     if (count == LENGTH) {
+                        flag += 1;
                         current = b;
                         printf("%d", a);
                         for (int i = 0; i < LENGTH - 1; i++) {
@@ -49,5 +52,8 @@ void findPrimeArithmeticSequences(int N1, int N2, int LENGTH) {
                 }
             }
         }
+    }
+    if (flag == 0) {
+        printf("0 \n");
     }
 }
