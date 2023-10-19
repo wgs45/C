@@ -28,6 +28,7 @@ bool isPrime(int num) {
 void findPrimeArithmeticSequences(int N1, int N2, int LENGTH) {
     int flag = 0;
 
+    printf("Output: \n");
     for (int a = N1; a <= N2; a++) {
         for (int b = a + 1; b <= N2; b++) {
             if (isPrime(a) && isPrime(b)) {
