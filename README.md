@@ -1,2 +1,5 @@
-# C_Program
-Collection of C Programming reference and exercises
+```markdown
+# C_Programming
+
+## Description
+Collection of C Programming solutions 
