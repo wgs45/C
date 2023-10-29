@@ -6,18 +6,12 @@
 // ! function prototypes
 void findMinimumMaximum(int arr[], int N);
 
-// Driver Code
 int main() {
 	// Given array
 	int arr[] = { 1, 2, 4, -99, 100, 1000};
 	
 	// length of the array
 	int N = sizeof(arr) / sizeof(arr[0]);
-
-    // loop
-    for (int i = arr[0]; i < N; i++) {
-        printf("%d ", arr[i]);
-    }
 
 	// Function call
 	findMinimumMaximum(arr, N);
@@ -48,7 +42,6 @@ void findMinimumMaximum(int arr[], int N) {
 		}
 	}
 
-	// Print the minimum and maximum element
 	printf("The minimum element is %d", minE);
 	printf("\n");
 	printf("The maximum element is %d", maxE);
