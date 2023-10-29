@@ -9,12 +9,8 @@ void findMinimumMaximum(int arr[], int N);
 // Driver Code
 int main() {
 	// Given array
-	// int arr[] = { 1, 2, 4, -99, 100, 1000};
-    int arr[] = {};
-
-    printf("Enter an value: ");
-    scanf("%d", &arr[0]);
-
+	int arr[] = { 1, 2, 4, -99, 100, 1000};
+	
 	// length of the array
 	int N = sizeof(arr) / sizeof(arr[0]);
 
