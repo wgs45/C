@@ -26,8 +26,10 @@ int check_reverse(int num) {
     int reverse_num = 0;
 
     while(num > 0) {
+        // * calculate the reverse number by adding the last digit of num to the reverse_num
         reverse_num = reverse_num * 10 + num % 10;
         printf("reverse number: %d\n", reverse_num);
+        // * remove the last digit from num
         num = num / 10;
         printf("num: %d\n", num);
     }
