@@ -1,50 +1,32 @@
-#include <limits.h>
 #include <stdio.h>
 
-// Function to find the minimum and
-// maximum element of the array
-// ! function prototypes
-void findMinimumMaximum(int arr[], int N);
-
 int main() {
-	// Given array
-	int arr[] = { 1, 2, 4, -99, 100, 1000};
-	
-	// length of the array
-	int N = sizeof(arr) / sizeof(arr[0]);
+    int num;
+    int min = 0, max = 0;
+    int firstInput = 1; // Flag to track the first input
 
-	// Function call
-	findMinimumMaximum(arr, N);
+    printf("Enter numbers (enter a non-numeric value to terminate): ");
 
-	return 0;
-}
+    while (1) {
+        if (scanf("%d", &num) == 1) {
+            if (firstInput) {
+                min = max = num;
+                firstInput = 0;
+            } else {
+                if (num < min) {
+                    min = num;
+                }
+                if (num > max) {
+                    max = num;
+                }
+            }
+        } else {
+            break; // Exit the loop if a non-numeric value is entered
+        }
+    }
 
-void findMinimumMaximum(int arr[], int N) {
-	int i;
+    printf("Minimum: %d\n", min);
+    printf("Maximum: %d\n", max);
 
-	// variable to store the minimum
-	// and maximum element
-	int minE = INT_MAX, maxE = INT_MIN;
-
-	// Traverse the given array
-	for (i = 0; i < N; i++) {
-
-		// If current element is smaller
-		// than minE then update it
-		if (arr[i] < minE) {
-			minE = arr[i];
-		}
-
-		// If current element is greater
-		// than maxE then update it
-		if (arr[i] > maxE) {
-			maxE = arr[i];
-		}
-	}
-
-	printf("The minimum element is %d", minE);
-	printf("\n");
-	printf("The maximum element is %d", maxE);
-
-	return;
+    return 0;
 }

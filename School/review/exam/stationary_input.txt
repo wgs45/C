@@ -1,0 +1,4 @@
+book 10 200
+book 5 100.2
+pencil 5 10.8
+bag 1 5

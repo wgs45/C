@@ -1,44 +1,54 @@
 #include <stdio.h>
 
-// Function to print a spiral matrix
+// ! Function prototype
 void spiral_matrix(int num);
 
 int main() {
-    int num;
-
     // Read the number of rows and columns from the user
+    int num;
     scanf("%d", &num);
-
     // Call the function to print the spiral matrix
     spiral_matrix(num);
-
     return 0;
 }
 
-// Function to print a spiral matrix
 void spiral_matrix(int num) {
-    int a[num][num]; // Array to store the matrix
-    int i, j; // Loop variables
-    int k = 1; // Variable to store the value to be assigned to the matrix
+    // Declare a 2D array to store the matrix
+    int a[num][num];
+    // Initialize variables
+    int i, j;
+    int k = 1;
+    int top = 0, bottom = num - 1, left = 0, right = num - 1;
 
-    // Iterate over the rows
-    for (i = 0; i < num / 2; i++) {
+    // Loop until the top and left boundaries meet
+    while (top <= bottom && left <= right) {
         // Fill the top row
-        for (j = i; j < num - i; j++) {
-            a[i][j] = k++;
+        for (j = left; j <= right; j++) {
+            a[top][j] = k++;
         }
+        top++;
+
         // Fill the right column
-        for (j = i + 1; j < num - i; j++) {
-            a[j][num - i - 1] = k++;
+        for (i = top; i <= bottom; i++) {
+            a[i][right] = k++;
         }
+        right--;
+
         // Fill the bottom row
-        for (j = num - i - 2; j > i; j--) {
-            a[num - i - 1][j] = k++;
+        if (top <= bottom) {
+            for (j = right; j >= left; j--) {
+                a[bottom][j] = k++;
+            }
         }
+        bottom--;
+
         // Fill the left column
-        for (j = num - i - 1; j > i; j--) {
-            a[j][i] = k++;
+        if (left <= right) {
+            for (i = bottom; i >= top; i--) {
+                a[i][left] = k++;
+            }
         }
+        left++;
     }
 
     // Print the matrix

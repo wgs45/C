@@ -1,22 +1,18 @@
 #include <stdio.h>
 
 int main() {
-    int n = 9; // Set the number of rows in the triangle
+    int i, j; // Declare two integer variables i and j
 
-    // Outer loop to iterate over each row
-    for (int i = 1; i <= n; i++) {
-        // Inner loop to print leading spaces
-        for (int j = 0; j < n - i; j++) {
-            printf("    "); // Print 4 spaces
+    for(i = 9; i >= 1; i--) { // Loop from 9 to 1 decrementing i by 1 in each iteration
+        for (j = 1; j <= 9; j++) { // Loop from 1 to 9 incrementing j by 1 in each iteration
+            if (j < i) { // Check if j is less than i
+                printf("  "); // If true, print two spaces
+            } else {
+                printf("%d ", 9 - j + 1); // If false, print the value of 9 - j + 1 followed by a space
+            }
         }
-
-        // Inner loop to print decreasing numbers
-        for (int k = i; k >= 1; k--) {
-            printf("%2d  ", k); // Print the number with 2 spaces
-        }
-
-        printf("\n"); // Print a new line
+        printf("\n"); // Print a new line after each row is printed
     }
 
-    return 0;
+    return 0; // Return 0 to indicate successful execution of the program
 }
