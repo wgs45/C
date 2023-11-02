@@ -16,7 +16,6 @@ int main() {
 
         for (x = 0; x < len; x++) {
             scanf("%d", &train[x]);
-            printf("line 19 train[%d]: %d\n", x, train[x]);
         }
 
         for (x = 0; x < len; x++) {
