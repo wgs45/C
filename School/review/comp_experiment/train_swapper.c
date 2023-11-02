@@ -22,14 +22,9 @@ int main() {
         for (x = 0; x < len; x++) {
             for (y = 0; y < len - 1 - x; y++) {
                 if (train[x] > train[y + 1]) {
-                    printf("line 25 train[%d]: %d\n", train[x]);
-                    printf("line 26 train[%d]: %d\n", y + 1, train[y + 1]);
                     temp = train[x];
-                    printf("line 28 temp: %d\n", temp);
                     train[x] = train[y + 1];
-                    printf("line 30 train[%d]: %d\n", x);
                     train[y + 1] = temp;
-                    printf("line 32 train[%d]: %d\n", y + 1);
                     count++;
                 }
             }
