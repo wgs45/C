@@ -1,7 +1,5 @@
 #include <stdio.h>
 
-// program to count lowercase letter in c
-
 int main() {
     // Create an array to store the count of each letter from 'a' to 'z'
     int alphabetCount[26] = {0};
