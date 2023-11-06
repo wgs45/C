@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// c program to find mode number
-
 // Define the maximum number of values that can be entered
 #define MAX_NUMBER 100
 // Define the maximum frequency that can be counted
