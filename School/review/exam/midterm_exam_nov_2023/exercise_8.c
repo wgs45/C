@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// program to find mode number in c
+
 int main() {
     // Initialize an array to store the frequency of each number
     int frequency[101] = {0};
