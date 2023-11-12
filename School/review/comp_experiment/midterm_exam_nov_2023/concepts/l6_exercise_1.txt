@@ -1,0 +1,40 @@
+Tex typesetting language
+source: uva 00272
+
+sample input:
+"to be or not to be"
+
+sample output:
+``to be or not to be''
+
+initialize a null variable
+input = '/0';
+
+double quotes (")
+
+initialize a count variable that start from 0
+0 means need opening double backticks (``)
+1 means need closing double backticks ('')
+count = 0;
+
+check the current input
+input = "hello world";
+
+check if variable contains double quotes and count is 0
+if (input = '"' and count = 0)
+
+if True then update the double quotes and count is 1
+count = 1;
+replace the double quotes
+printf("``");
+
+else check if variable contains double quotes and count is 1
+if (input = '"' and count = 1)
+
+if True then update the double quotes and count is 0
+count = 0;
+replace the double quotes
+printf("''");
+
+else just print the variable
+printf("%c", input);
