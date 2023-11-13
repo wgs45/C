@@ -1,0 +1,33 @@
+// c program to find gcd of two positive integers
+// sample input:
+// 24 36
+
+//sample output:
+// 12
+
+# Declare a function to find gcd of two positive integers
+int find_gcd(int x, int y)
+
+# Check if y is equal to 0
+# if true, return (x). If false, continue
+if (y == 0) {
+    return x;
+}
+
+# calculate the gcd recursively
+result = find_gcd(y, x % y);
+
+# then return result
+return result;
+
+# main function
+int main()
+
+# check if x is smaller than y
+# if true (switch position), find_gcd(y, x).
+# If false (don't switch position), find_gcd(x, y)
+if (x < y) {
+    find_gcd(y, x);
+} else {
+    find_gcd(x, y);
+}

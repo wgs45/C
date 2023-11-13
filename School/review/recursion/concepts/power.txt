@@ -1,0 +1,28 @@
+// c program to compute power to number
+// formula: number ^ k
+// sample input:
+// 2 2
+
+// sample output:
+// 4
+
+# declare a function to compute power to number
+int power(int number, int k)
+
+# check if k equals to 1
+# if true, return number. Else, continue
+if (number == 1) {
+    return num;
+}
+
+# calculate power to number
+result = num * power(number, k - 1);
+
+# example:
+num = 2
+
+2 * power(2, 2 - 1) => 2 * 2 ^ 1 => 2 * 2 => 4
+2 * power(2, 1 - 1) => 2 * 2 ^ 0 => 2 * 1 => 2
+
+# final result
+2 * 2 => 4

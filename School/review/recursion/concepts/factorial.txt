@@ -1,0 +1,29 @@
+// c program to find factorial numbers
+// sample input:
+// 4
+
+// sample output:
+// 24
+
+# declare a function to find factorial numbers based on user input
+find_factorial(int num)
+
+# check if number is equals to 1 or 0
+# if true return the current number. Else, continue
+if (num == 0 || num == 1) {
+    return num;
+}
+
+# calculate the factorial number
+int result = num * factorial(num - 1);
+
+# example:
+num = 4;
+
+4 * factorial(4 - 1) => 4 * 3
+4 * factorial(3 - 1) => 4 * 2
+4 * factorial(2 - 1) => 4 * 1
+4 * factorial(1 - 1) => 4 * 0
+
+# final result:
+4 * 3 * 2 * 1 = 24
