@@ -9,7 +9,7 @@ int main() {
     scanf("%d", &n);
 
     if (n < 0) {
-        return 1;
+        return 1; // exit code 1
     }
 
     printf("%d\n", calculateSum(n));
