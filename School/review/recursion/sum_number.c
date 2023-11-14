@@ -4,24 +4,20 @@
 int calculateSum(int n);
 
 int main() {
-    // Declare variables
     int n;
 
-    // Prompt user for input
     scanf("%d", &n);
 
-    // Check if n is non-negative
     if (n < 0) {
-        printf("Please enter a non-negative number.\n");
-        return 1; // Exit with an error code
+        return 1;
     }
 
-    // Call the function and print the result
-    printf("The sum is: %d\n", calculateSum(n));
+    printf("%d\n", calculateSum(n));
 
     return 0;
 }
 
+// This function calculates the sum of squares from 1 to n
 int calculateSum(int n) {
     // Base case: when n becomes 0, return 0
     if (n == 0) {
