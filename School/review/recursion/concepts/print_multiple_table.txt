@@ -1,0 +1,71 @@
+// C program to print all multiplication table from 1 to 9
+// Sample output:
+// 1 x 1 = 1
+// 1 x 2 = 2	1 x 3 = 3	1 x 4 = 4	1 x 5 = 5
+// 1 x 6 = 6	1 x 7 = 7	1 x 8 = 8	1 x 9 = 9
+
+# main function
+int main()
+
+# declare a void function to printMultiplicationTable
+printMultiplicationTable(int num, int multiplier)
+
+# if multiplier is greater than 9
+# terminate the looping then continue
+if (multiplier > 9) {
+    return;
+}
+
+# print the multiplication table
+# "\t" = tab (4 spaces)
+printf("%d x %d = %d\t", num, multiplier, num * multiplier);
+
+# recursively call the function
+printMultiplicationTable(num, multiplier + 1);
+
+# declare a void function to printTableForNumbers
+void printTableForNumbers(int num)
+
+# if num is greater than 9
+# terminate the looping then continue
+if (num > 9) {
+    return;
+}
+
+# print the multiplication table for the current number
+printMultiplicationTable(num, 1);
+print("\n");
+
+# recursively call the function for the next number
+printTableForNumbers(num  + 1);
+
+# final result
+int num = 1, multiplier = 1;
+
+void printMultiplicationTable(int num = 1, int multiplier = 1) {
+    if (multiplier > 9) {
+        return;
+    }
+
+    printf("%d x %d = %d\t", num, multiplier, num * multiplier);
+    // sample output: "1 x 1 = 1"
+
+    printMultiplicationTable(num = 1, multiplier = 1 + 1)
+    // sample output: "1 x 2 = 2"
+}
+
+void printTableForNumbers(int num = 1) {
+    if (num > 9) {
+        return;
+    }
+
+    // this part is used to output and organize the multiplication table
+    printMultiplicationTable(num = 1, 1);
+    printf("\n");
+    // sample output: "1 x 1 = 1"
+                      "1 x 2 = 2"
+
+    // then recursively organize the multiplication table for the next number
+    printTableForNumbers(num = 1 + 1);
+    // sample output: "1 x 3 = 3"
+}
