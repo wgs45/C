@@ -1,0 +1,30 @@
+// c program to print multiplication table based on user input
+
+# declare a void variable that accepts 2 inputs
+void print_multiplication_table(int num, int multiplier)
+
+# check if multiplier is greater than 9
+# if true, stop the recursion. Else, continue
+if (multiplier > 9) {
+    return;
+}
+
+# print the multiplication table
+printf("%d x %d = %d\n", num, multiplier, num * multiplier);
+
+# recursively call the function
+print_multiplication_table(num, multiplier + 1);
+
+# example:
+int num = 1, multiplier = 9;
+
+printf("%d x %d = %d\n", num, multiplier, num * multiplier);
+num = 1, multiplier = 1; 1 * 1 => 1;
+
+print_multiplication_table(num = 1, multiplier = 1 + 1);
+
+# final result:
+1 x 1 = 1
+1 x 2 = 2
+1 x 3 = 3
+z x 4 = 4....

@@ -9,7 +9,7 @@ int main() {
     scanf("%d", &n);
 
     if (n < 0) {
-        return 1; // exit code 1
+        return 1;
     }
 
     printf("%d\n", calculateSum(n));
@@ -17,13 +17,14 @@ int main() {
     return 0;
 }
 
-// This function calculates the sum of squares from 1 to n
 int calculateSum(int n) {
-    // Base case: when n becomes 0, return 0
+    int result;
+
     if (n == 0) {
         return 0;
     } else {
-        // Recursive case: calculate sum for n-1 and add n*n
-        return calculateSum(n - 1) + (n * n);
+        result = calculateSum(n - 1) + (n * n);
     }
+
+    return result;
 }
