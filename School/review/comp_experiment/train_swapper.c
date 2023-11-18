@@ -37,13 +37,13 @@ int main(){
                     printf("train[%d] > train[%d]\n", train[j], train[j+1]);
                     // Swap the elements
                     temp = train[j];
-                    printf("temp = %d\n", temp);
+                    // printf("temp = %d\n", temp);
                     train[j] = train[j+1];
-                    printf("train[j] = %d\n", train[j]);
+                    // printf("train[j] = %d\n", train[j]);
                     train[j+1] = train[j];
-                    printf("train[j+1] = %d\n", train[j+1]);
+                    // printf("train[j+1] = %d\n", train[j+1]);
                     count++;
-                    printf("count = %d\n", count);
+                    // printf("count = %d\n", count);
                 }
             }
         }
