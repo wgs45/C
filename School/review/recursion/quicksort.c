@@ -60,10 +60,12 @@ int partition(int arr[], int low, int high) {
 
 // Function to perform quicksort
 void quickSort(int arr[], int low, int high) {
+    int pivot;
+    
     // If there are more than one element
     if (low < high) {
         // Partition the array and get the pivot index
-        int pi = partition(arr, low, high);
+        pivot = partition(arr, low, high);
 
         // Recursively sort the elements before and after the pivot
         quickSort(arr, low, pi - 1);
