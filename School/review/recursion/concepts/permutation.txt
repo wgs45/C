@@ -1,0 +1,98 @@
+// c program to find permutation
+// sample input:
+// XY
+
+// sample output:
+// XY
+// YX
+
+// declare a function prototype
+void generate_permutation(char str[], int left, int right);
+
+// define a variable
+int i, temp, count = 0;
+
+// check if left and right are equal
+// if yes, print the string
+// example: "AA", which left and right are equal
+// then we directly print the string
+if (left == right) {
+    printf("%s\n", str);
+}
+
+// else iterate through all possible positions
+for (i = left; i < right; i++) {
+    // swap the characters
+    temp = strlen[left];
+    str[left] = str[right];
+    str[i] =  temp;
+}
+
+// recursively generate permutations
+generate_permutation(str, left + 1, right);
+
+// swap the characters back to restore the original string
+temp = strlen[left];
+str[left] = str[i];
+str[i] = temp;
+
+// increment count to count the total number of permutations
+count++
+
+// then print the total number of permutations
+printf("%d\n", count);
+
+// input a character then save it into a variable name str
+char str[] = "XY";
+
+// calculate the the length of the string
+int len = strlen(str);
+
+// generate permutation for string
+generate_permutation(str, 0, len - 1);
+
+// then return 0
+return 0;
+
+// example concept
+char str[] = "XY";
+
+int n = strlen(str); => str contain "XY"
+
+generatePermutations(str, 0, n - 1);
+// str is the first parameter which is a character string
+// 0 is the second parameter which initiate the string count from the first index which is 0
+// n - 1 is the third parameter which increment the string count from the second last index to the first index
+
+return 0;
+
+void generatePermutations(char str[], int left, int right) {
+    int i, temp, count = 0;
+
+    if (left == right) {
+        printf("%s\n", str);
+    } else {
+        for (i = left; i < right; i++) {
+            // i = 0 "X"
+            // right = 1 "Y"
+            temp = str[left]; => temp = "X";
+            str[left] = str[i]; => str = "YX"
+            str[i] = temp; => str = "XY"
+        }
+
+        // check for the remaining characters
+        generatePermutations(str, left + 1, right);
+        // str = "XY"
+        // left = 0 + 1
+        // right = 1
+
+        // swap back to the original string
+        temp = str[left]; => temp = "XY"
+        str[left] = str[i]; => str[left] = "XY"
+        str[i] = temp; => str = "XY"
+
+        count++;
+
+        printf("count: %d\n", count);
+    }
+}
