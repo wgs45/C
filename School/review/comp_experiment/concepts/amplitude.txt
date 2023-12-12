@@ -1,0 +1,64 @@
+// c program to print amplitude wave
+// source: uva00488
+
+sample input:
+2 => number of cases
+3 1 => amplitude then frequency
+2 2 => amplitude then frequency
+
+sample output:
+// amplitude is set to 3
+// frequency is set to 1
+1
+22
+333
+22
+1
+// amplitude is set to 2
+// frequency is set to 2
+1
+22
+1
+
+1
+22
+1
+
+# define the variable
+int num_of_cases = 0, amplitude = 0, frequency = 0;
+
+# then input the num of cases
+scanf("%d", &num_of_cases);
+
+# looping through the cases
+# then input the amplitude and frequency
+for (int i = 0; i < num_of_cases; i++) {
+    scanf("%d %d", &amplitude, &frequency);
+}
+
+# check if frequency is greater than 0
+# if frequency is greater than 0, increase the waveform
+# then print the output
+# moving to the next line
+while (frequency > 0) {
+    for (int h = 1; h <= amplitude; h++) {
+        for (int num = 1; num <= h; num++) {
+            printf("%d", h);
+        }
+    }
+    printf("\n");
+}
+
+# looping again to decrease the waveform
+# then print the output
+# moving to the next line
+for (int h = amplitude - 1; h > 0; h--) {
+    for (int num = 1; num <= h; num++) {
+        printf("%d", h);
+    }
+    printf("\n");
+}
+
+printf("\n");
+frequency--; // decrease the frequency
+
