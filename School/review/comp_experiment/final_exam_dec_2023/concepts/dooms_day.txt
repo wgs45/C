@@ -1,0 +1,74 @@
+```c
+#include <stdio.h>
+#include <stdlib.h>
+```
+These are standard C library headers. `stdio.h` is for input and output operations, and `stdlib.h` is for functions involving memory allocation and other general utilities.
+
+```c
+// c program to calculate doomsday date
+```
+This is a comment indicating the purpose of the program.
+
+```c
+int main() {
+```
+This is the starting point of the program. The `main` function is the entry point for C programs.
+
+```c
+  const int day_in_a_month[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+  const char *day_in_a_week[] = {"Friday", "Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"};
+```
+Two arrays are declared and initialized:
+- `day_in_a_month`: It represents the number of days in each month, with an extra element at the beginning (0) for indexing purposes.
+- `day_in_a_week`: It represents the days of the week, starting from Friday.
+
+```c
+  int use_case, month, day, i, total_days;
+```
+Variables are declared to store the input values and other intermediate values. `use_case` represents the number of test cases, `month` and `day` represent the month and day for each test case, `i` is a loop counter, and `total_days` will store the total number of days from the beginning of the year.
+
+```c
+  // input use_case
+  scanf("%d", &use_case);
+```
+Reads the number of test cases from the standard input.
+
+```c
+  while(use_case--) {
+```
+A `while` loop is initiated, which will iterate `use_case` times. The loop will execute the block of code inside for each iteration.
+
+```c
+    scanf("%d %d", &month, &day);
+```
+Reads the month and day for the current test case from the standard input.
+
+```c
+    total_days = 0;
+```
+Initializes `total_days` to 0 for each test case.
+
+```c
+    for (i = 0; i < month; i++) {
+      total_days += day_in_a_month[i];
+    }
+```
+A `for` loop is used to calculate the total number of days from the beginning of the year up to the specified month. It adds the days in each month to `total_days`.
+
+```c
+    total_days += day;
+```
+Adds the days in the current month to `total_days`.
+
+```c
+    printf("%s\n", day_in_a_week[total_days % 7]);
+```
+Prints the day of the week corresponding to the total number of days using the `% 7` operation to ensure it cycles through the days of the week.
+
+```c
+  }
+
+  return 0;
+}
+```
+The program returns 0, indicating successful execution. This is the end of the `main` function.

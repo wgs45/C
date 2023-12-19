@@ -1,0 +1,124 @@
+```c
+#include <stdio.h>
+#include <limits.h>
+```
+These are standard C library headers. `stdio.h` is for input and output operations, and `limits.h` is for integral type size limits.
+
+```c
+int main() {
+    int use_case = 0, r = 0;
+```
+The `main` function begins. It declares two integer variables `use_case` and `r` to store the number of test cases and a loop counter, respectively.
+
+```c
+    scanf("%d", &use_case);
+```
+This line reads the number of test cases (`use_case`) from the standard input.
+
+```c
+    for (r = 0; r < use_case; r++) {
+        printf("Case %d: \n", r + 1);
+```
+A `for` loop is initiated to iterate over each test case. It prints the case number.
+
+```c
+        int base_cost[36] = {0};
+        int query_time = 0, query_num = 0, i;
+```
+Inside the loop, an array `base_cost` is declared to store the cost of each base (up to base 36), and two integers `query_time` and `query_num` are declared to store the number of queries and the current query number, respectively.
+
+```c
+        for(i = 0; i <= 35; i++) {
+            scanf("%d", base_cost + i);
+        }
+```
+A `for` loop reads the cost of each base from the input and stores it in the `base_cost` array.
+
+```c
+        scanf("%d", &query_time);
+```
+This line reads the number of queries (`query_time`) for the current test case.
+
+```c
+        int time = 0;
+```
+An integer variable `time` is declared to iterate over the queries.
+
+```c
+        for (time = 0; time < query_time; time++) {
+            int sum[37] = {0};
+```
+Another loop is initiated to process each query. An array `sum` is declared to store the sum of costs for each base (up to base 36).
+
+```c
+            scanf("%d", &query_num);
+```
+This line reads the current query number (`query_num`) from the input.
+
+```c
+            int min = INT_MAX;
+            int j = 0;
+```
+Two variables are declared: `min` to store the minimum sum of costs and `j` as a loop counter.
+
+```c
+            for (j = 2; j <= 36; j++) {
+                int temp = query_num;
+                do {
+                    sum[j] += base_cost[temp % j];
+                    temp = temp / j;
+                } while (temp > 0);
+                if (min > sum[j]) {
+                    min = sum[j];
+                }
+            }
+```
+A loop is initiated to calculate the sum of costs for each base. It uses a nested loop and a do-while loop to repeatedly divide the query number by the base and accumulate the costs. The minimum sum is also updated during this process.
+
+```c
+            printf("Cheapest base(s) for number %d: ", query_num);
+```
+Prints a message indicating the current query number.
+
+```c
+            int k = 0, len = 0;
+            char str[1000] = {'\0'};
+```
+Declares integer variables `k` and `len`, and a character array `str` to store the bases with the minimum sum.
+
+```c
+            for (k = 0; k <= 36; k++) {
+                if (sum[k] == min) {
+                    if (len == 0) {
+                        len += snprintf(str + len, sizeof(str) - len, "%d", k);
+                    } else {
+                        len += snprintf(&str[len], sizeof(str) - len, " %d", k);
+                    }
+                }
+            }
+```
+A loop is initiated to find bases with the minimum sum. It uses the `snprintf` function to format and append the base numbers to the `str` array.
+
+```c
+            printf("%s\n", str);
+        }
+```
+Prints the bases with the minimum sum for the current query.
+
+```c
+        if (r != use_case - 1) {
+            printf("\n");
+        }
+```
+Prints a newline between test cases, except for the last one.
+
+```c
+    }
+```
+Ends the loop for test cases.
+
+```c
+    return 0;
+}
+```
+Indicates successful program execution.

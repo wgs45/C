@@ -1,0 +1,69 @@
+```c
+#include <stdio.h>
+```
+This is a standard C library header for input and output operations.
+
+```c
+int main() {
+```
+This is the beginning of the `main` function, which is the entry point of the C program.
+
+```c
+    int n, tmp; // Declare variables n (number of commands) and tmp (temporary variable)
+    char cmd[128]; // Declare character array cmd to store commands
+```
+Declaration of variables: `n` for the number of commands, `tmp` as a temporary variable, and `cmd` as an array to store the commands.
+
+```c
+    while(scanf("%d", &n) == 1 && n) { // Read the value of n until it is 0 or invalid
+```
+A `while` loop that reads the number of commands (`n`) from the standard input until either the input is invalid or `n` becomes 0.
+
+```c
+        int dice[6] = {1,2,3,4,5,6}; // Initialize an array dice with values 1 to 6
+```
+Initialization of an array `dice` representing the six faces of a die with values 1 to 6.
+
+```c
+        while(n--) { // Execute the following block n times
+```
+Another `while` loop that iterates `n` times, representing the number of commands.
+
+```c
+            scanf("%s", cmd); // Read a command into the cmd array
+```
+Reads a command (a string) from the standard input and stores it in the `cmd` array.
+
+```c
+            if(cmd[0] == 'n') { // If the first character of the command is 'n'
+                tmp = dice[1], dice[1] = dice[0]; // Swap values of dice[1] and dice[0], store dice[1] in tmp
+                dice[0] = dice[4], dice[4] = dice[5]; // Swap values of dice[0], dice[4], and dice[5]
+                dice[5] = tmp; // Assign tmp to dice[5]
+            } else if(cmd[0] == 's') { // If the first character of the command is 's'
+                tmp = dice[1], dice[1] = dice[5]; // Swap values of dice[1] and dice[5], store dice[1] in tmp
+                dice[5] = dice[4], dice[4] = dice[0]; // Swap values of dice[5], dice[4], and dice[0]
+                dice[0] = tmp; // Assign tmp to dice[0]
+            } else if(cmd[0] == 'e') { // If the first character of the command is 'e'
+                tmp = dice[3], dice[3] = dice[0]; // Swap values of dice[3] and dice[0], store dice[3] in tmp
+                dice[0] = dice[2], dice[2] = dice[5]; // Swap values of dice[0], dice[2], and dice[5]
+                dice[5] = tmp; // Assign tmp to dice[5]
+            } else { // If the first character of the command is not 'n', 's', or 'e'
+                tmp = dice[3], dice[3] = dice[5]; // Swap values of dice[3] and dice[5], store dice[3] in tmp
+                dice[5] = dice[2], dice[2] = dice[0]; // Swap values of dice[5], dice[2], and dice[0]
+                dice[0] = tmp; // Assign tmp to dice[0]
+            }
+```
+This block of code checks the first character of the command and performs different swaps on the `dice` array based on the command ('n', 's', 'e', or 'w').
+
+```c
+        }
+        printf("%d\n", dice[0]); // Print the value of dice[0]
+    }
+```
+After processing all commands for a test case, it prints the value on the top face of the die (`dice[0]`).
+
+```c
+    return 0;
+}
+```
+The program returns 0, indicating successful execution. This is the end of the `main` function.

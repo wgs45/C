@@ -1,0 +1,61 @@
+```c
+#include <stdio.h>
+#include <stdlib.h>
+```
+These are standard C library headers. `stdio.h` is for input and output operations, and `stdlib.h` is for functions involving memory allocation and other general utilities.
+
+```c
+int main() {
+  int m, n, i;
+```
+This declares the `main` function and three integer variables: `m`, `n`, and `i`.
+
+```c
+  while(scanf("%d %d", &m, &n) == 2) {
+```
+This initiates a while loop that continues as long as `scanf` successfully reads two integers (returns 2). It reads values for `m` and `n` from the standard input.
+
+```c
+    if (n < 2 || m == 0 || m < n) {
+      puts("Boring!");
+      continue;
+    }
+```
+This block checks if the input values satisfy certain conditions. If `n` is less than 2, or `m` is 0, or `m` is less than `n`, the program prints "Boring!" and continues to the next iteration of the loop.
+
+```c
+    int ans[100] = {m};
+```
+An integer array named `ans` is declared and initialized with the value of `m`. This array will store the sequence of numbers obtained by repeatedly dividing `m` by `n`.
+
+```c
+    for (i = 1;; i++) {
+      if(ans[i - 1] == 1) {
+        break;
+      } else if (ans[i - 1] % n) {
+        i = -1;
+        break;
+      }
+      ans[i] = ans[i - 1] / n;
+    }
+```
+A `for` loop is initiated, and it runs indefinitely (`;;`) until a `break` statement is encountered. Inside the loop, it checks if the previous element in the `ans` array is equal to 1. If true, it breaks out of the loop. If the previous element is not divisible by `n`, it sets `i` to -1 and breaks out of the loop. Otherwise, it updates the next element in the array by dividing the previous element by `n`.
+
+```c
+    if (i < 0) {
+      puts("Boring!");
+    } else {
+      printf("%d", ans[0]);
+      for (m = 1; m < i; m++) {
+        printf(" %d", ans[m]);
+      }
+    }
+  }
+```
+After the loop, the program checks whether the loop terminated normally or with an error. If `i` is less than 0, it means an error occurred during the loop, and "Boring!" is printed. Otherwise, it prints the sequence of numbers stored in the `ans` array.
+
+```c
+  return 0;
+}
+```
+The program returns 0 to indicate successful execution.

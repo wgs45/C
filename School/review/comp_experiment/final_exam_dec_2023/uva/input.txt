@@ -18,3 +18,55 @@
 1
 10
 100
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int n;
+
+    while (scanf("%d", &n) == 1) {
+        int *sequence = (int *)malloc(n * sizeof(int));
+
+        // Read the sequence
+        for (int i = 0; i < n; i++) {
+            scanf("%d", &sequence[i]);
+        }
+
+        int *differences = (int *)malloc((n - 1) * sizeof(int));
+
+        // Calculate the differences between consecutive elements
+        for (int i = 0; i < n - 1; i++) {
+            differences[i] = abs(sequence[i] - sequence[i + 1]);
+        }
+
+        // Check if the differences form a jolly jumper sequence
+        int isJolly = 1;
+        for (int i = 1; i <= n - 1; i++) {
+            int found = 0;
+            for (int j = 0; j < n - 1; j++) {
+                if (differences[j] == i) {
+                    found = 1;
+                    break;
+                }
+            }
+            if (!found) {
+                isJolly = 0;
+                break;
+            }
+        }
+
+        // Output the result
+        if (isJolly) {
+            printf("jolly\n");
+        } else {
+            printf("not jolly\n");
+        }
+
+        // Free allocated memory
+        free(sequence);
+        free(differences);
+    }
+
+    return 0;
+}

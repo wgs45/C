@@ -1,0 +1,82 @@
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+```
+These are preprocessor directives. They include necessary header files for standard input and output operations (`<stdio.h>`), dynamic memory allocation (`<stdlib.h>`), and string manipulation functions (`<string.h>`).
+
+```c
+int main() {
+```
+The `main` function is the entry point of a C program. It returns an integer and takes no parameters in this case.
+
+```c
+  int use_case, i, j;
+```
+Declares three integer variables: `use_case` to store the number of test cases, and `i` and `j` for loop counters.
+
+```c
+  int count[91] = {0};
+```
+Declares an array `count` of size 91 to store the count of each ASCII character. The array is initialized to all zeros.
+
+```c
+  char str[1000] = {0};
+```
+Declares a character array `str` of size 1000 to store input strings. It is initialized to all zeros.
+
+```c
+  // input use_case
+  if (scanf("%d", &use_case) != 1) {
+    printf("Invalid value");
+    return 1;
+  }
+```
+Reads the number of test cases (`use_case`) from the standard input. If the input is not a valid integer, it prints an error message and returns 1, indicating an error.
+
+```c
+  getchar();
+```
+Reads and discards the newline character left in the input buffer by the previous `scanf`.
+
+```c
+  while(use_case--) {
+```
+Starts a loop that will execute as long as `use_case` is greater than zero. It iterates through the test cases.
+
+```c
+    fgets(str, sizeof(str), stdin);
+```
+Reads a line of input (up to 999 characters) from the standard input and stores it in the `str` array.
+
+```c
+    for (i = 0; i < strlen(str); i++) {
+      if (str[i] >= 'a' && str[i] <= 'z') {
+        count[str[i] - 'a' + 'A']++;
+      } else {
+        count[str[i]]++;
+      }
+    }
+```
+Iterates through each character in the input string and increments the corresponding count in the `count` array. It treats lowercase letters as uppercase.
+
+```c
+  for (i = sizeof(str); i >= 1; i--) {
+```
+Starts a loop to iterate from the end of the `count` array to the beginning.
+
+```c
+    for (j = 'A'; j <= 'Z'; j++) {
+      if (count[j] == i) {
+        printf("%c %d\n", j, i);
+      }
+    }
+  }
+```
+Nested loop to iterate through the uppercase letters. Prints the characters and their counts in descending order of count.
+
+```c
+  return 0;
+}
+```
+Indicates a successful execution of the program by returning 0.

@@ -1,0 +1,93 @@
+```c
+#include <stdio.h>
+#include <stdlib.h>
+```
+These are standard C library headers. `<stdio.h>` is included for input and output operations, and `<stdlib.h>` is included for functions involving memory allocation and other general utilities.
+
+```c
+int main() {
+    int n, i, j;
+```
+This defines the `main` function and declares three integer variables: `n`, `i`, and `j`.
+
+```c
+    while(scanf("%d", &n) == 1) {
+```
+A `while` loop is initiated, which continues as long as `scanf` successfully reads an integer (returns 1). This loop is used to process multiple test cases.
+
+```c
+        int *sequence = (int *) malloc(n * sizeof(int));
+```
+Dynamic memory is allocated for an integer array named `sequence` of size `n` using `malloc`. This array will store the input sequence of numbers.
+
+```c
+        for (i = 0; i < n; i++) {
+            scanf("%d", &sequence[i]);
+        }
+```
+A `for` loop is used to read `n` integers from the standard input and store them in the `sequence` array.
+
+```c
+        int *differences = (int *) malloc((n - 1) * sizeof(int));
+```
+Dynamic memory is allocated for an integer array named `differences` of size `n - 1` using `malloc`. This array will store the absolute differences between consecutive elements of the input sequence.
+
+```c
+        for (i = 0; i < n - 1; i++) {
+            differences[i] = abs(sequence[i] - sequence[i + 1]);
+        }
+```
+A `for` loop is used to calculate the absolute differences between consecutive elements of the `sequence` array and store them in the `differences` array.
+
+```c
+        int is_jolly = 1;
+```
+An integer variable `is_jolly` is initialized to 1. This variable will be used to determine whether the sequence is a jolly jumper or not.
+
+```c
+        for (i = 1; i <= n - 1; i++) {
+            int found = 0;
+```
+Another `for` loop is initiated to iterate through possible differences from 1 to `n - 1`. The variable `found` is used to check if a particular difference is found in the `differences` array.
+
+```c
+            for (j = 0; j < n - 1; j++) {
+                if (differences[j] == i) {
+                    found = 1;
+                    break;
+                }
+            }
+```
+An inner `for` loop is used to search for the current difference `i` in the `differences` array. If found, the `found` variable is set to 1, and the loop breaks.
+
+```c
+            if (!found) {
+                is_jolly = 0;
+                break;
+            }
+        }
+```
+After the inner loop, if `found` is still 0, it means the current difference `i` was not found in the array, so `is_jolly` is set to 0, and the outer loop breaks.
+
+```c
+        if (is_jolly) {
+            printf("jolly\n");
+        } else {
+            printf("not jolly\n");
+        }
+```
+The program prints "jolly" if `is_jolly` is 1 and "not jolly" otherwise.
+
+```c
+        free(sequence);
+        free(differences);
+```
+Memory allocated for the `sequence` and `differences` arrays is freed to prevent memory leaks.
+
+```c
+    }
+
+    return 0;
+}
+```
+The program returns 0, indicating successful execution.
