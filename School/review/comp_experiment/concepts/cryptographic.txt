@@ -1,57 +1,82 @@
 // c program to guess cryptographic words
 // source: uva10008
 
-// declare a variable
+```c
 int use_case, i, j;
+```
+This line declares three integer variables: `use_case`, `i`, and `j`.
 
-// an array to store the count of characters
-// initialized to zero
+```c
 int count[91] = {0};
+```
+An integer array named `count` is declared with a size of 91, and all elements are initialized to 0. This array is likely intended to store counts of characters. The size 91 is chosen to accommodate uppercase letters from 'A' to 'Z' and lowercase letters from 'a' to 'z'.
 
-// an array to store the input string
-// initialized to zero
-count str[1000] = {0};
+```c
+char str[1000] = {0};
+```
+A character array named `str` is declared with a size of 1000, and all elements are initialized to 0. This array will be used to store input strings.
 
-// read number of use_case from input
+```c
 if (scanf("%d", &use_case) != 1) {
-    printf("error");
+    printf("Error");
     return 1;
 }
+```
+This code reads an integer from the standard input and stores it in the variable `use_case`. If the input operation fails (returns a value other than 1), an error message is printed, and the program exits with a return code of 1.
 
-// read input data
-getchar(); // remove the newline character from the input buffer
+```c
+getchar();
+```
+This function is used to consume the newline character left in the input buffer after reading `use_case` using `scanf`. It helps to prepare the input buffer for the upcoming `fgets` function.
 
-// while loop
+```c
 while(use_case--) {
-    // read the input string
+```
+A `while` loop is initiated, which will iterate `use_case` times. The loop will execute the block of code inside for each iteration.
+
+```c
     fgets(str, sizeof(str), stdin);
+```
+This line reads a line from the standard input and stores it in the character array `str`. The `sizeof(str)` ensures that the input doesn't exceed the size of the array (1000 characters in this case).
 
-// loop through each character in a string
-    for (int i = 0; i < strlen(str); i++) {
-        // check if character is lowercase letter
+```c
+    for (i = 0; i < strlen(str); i++) {
+```
+A `for` loop is initiated to iterate over each character in the string `str`. The loop will execute the block of code inside for each character.
+
+```c
         if (str[i] >= 'a' && str[i] <= 'z') {
-            // if true, increment the count of its corresponding uppercase letter
             count[str[i] - 'a' + 'A']++;
-        } else {
-            // if false, increment the count of the character
-            count[str[i]]++;
         }
-    }
+```
+This code checks if the current character is a lowercase letter. If true, it increments the count for the corresponding uppercase letter in the `count` array. This is done by converting the lowercase letter to uppercase using the expression `str[i] - 'a' + 'A'`.
 
-    // loop through the count array in descending order
+```c
     for (i = sizeof(str); i >= 1; i--) {
-        // loop through the uppercase letter
+```
+Another `for` loop is initiated, this time to iterate over the array indices in reverse order.
+
+```c
         for (j = 'A'; j <= 'Z'; j++) {
-            // if the count of the current letter matches the current count
+```
+An inner `for` loop is initiated to iterate over uppercase letters from 'A' to 'Z'.
+
+```c
             if (count[j] == i) {
-                // print the result
                 printf("%c %d\n", j, i);
             }
         }
     }
+```
+This block of code checks if the count of a particular character (`j`) is equal to the current index (`i`). If true, it prints the character and its count.
 
+```c
     return 0;
 }
+```
+The program returns 0, indicating successful execution.
+
+------------------------------------------------------------------------------
 
 // example usage:
 // sample input:
