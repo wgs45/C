@@ -1,23 +1,27 @@
 #include <stdio.h>
 #include <math.h>
 
-void norm_vector(float *vector, int size);
+void vector_norm(float *vector, int size);
 
 int main() {
-  float vector[] = {3.0, 4.0};
+  int i, size = 2;
 
-  int size = sizeof(vector) / sizeof(vector[0]);
+  float vector[size];
 
-  printf("Original vector: %.2f, %.2f\n", vector[0], vector[1]);
+  for (i = 0; i < size; i++) {
+    scanf("%f", &vector[i]);
+  }
 
-  norm_vector(vector, size);
+  vector_norm(vector, size);
 
-  printf("Normalized vector: %.2f, %.2f\n", vector[0], vector[1]);
+  for(i = 0; i < size; i++) {
+    printf("%.4f\n", vector[i]);
+  }
 
   return 0;
 }
 
-void norm_vector(float *vector, int size) {
+void vector_norm(float *vector, int size) {
   int i;
   float magnitude = 0.0;
 
@@ -30,5 +34,4 @@ void norm_vector(float *vector, int size) {
   for (i = 0; i < size; i++) {
     vector[i] /= magnitude;
   }
-
 }
