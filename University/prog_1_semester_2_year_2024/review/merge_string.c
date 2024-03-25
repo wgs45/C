@@ -1,9 +1,7 @@
 #include <stdio.h>
 
 int main() {
-    char str1[100];
-    char str2[100];
-    char result[100];  
+    char str1[100], str2[100], result[100];
     int i = 0, j = 0;
 
     // input string
