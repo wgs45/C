@@ -1,0 +1,20 @@
+#include <stdio.h> #include <math.h>
+int main(K
+int a,aa,aaa,b,c=0,sum=0;
+printf（"請輸入數字：n"）；
+scanf ("%d", &a);
+aa=a;
+aaa=a;
+while (a!=0){
+a/=10; c++;
+while(aa!=0){
+b=aa%10;
+aa/=10;
+sum+=pow (b,c);
+if (aaa==sum){
+printf（"是阿姆斯壯
+數"）；
+Jelsef
+printf（"不是阿姆斯
+壯數"）；
+return 0;
