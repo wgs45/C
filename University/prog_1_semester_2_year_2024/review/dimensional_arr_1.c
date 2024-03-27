@@ -5,12 +5,14 @@ int main() {
     int matrix[100][100];
     int x = 0, y = 0, i = 1, n = 4;
 
+    // initialize matrix
     for (y = 0; y < n; y++) {
         for (x = 0; x < n; x++) {
             matrix[y][x] = 0;
         }
     }
 
+    // reset position and directions
     x = 0; y = 0;
 
     while(i <= 16) {
