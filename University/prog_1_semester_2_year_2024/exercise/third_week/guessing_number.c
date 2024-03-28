@@ -12,14 +12,16 @@ int main() {
 
     // random number generator
     for (int i = 0; i < 4; i++) {
-        int index = rand() % (10 - i); // generates a random index within the remaining numbers
+        int index = rand() % (10 - i);
 
-        randomarray[i] = digits[index]; // stores the random selected digit in variable randomarray
+        randomarray[i] = digits[index];
         
-        digits[index] = digits[9 - i]; // replace the selected digits with the last digits in variable digit array to avoid duplicatied digits in randomarray 
+        // Swap the selected digit with the last digit to avoid duplicates
+        int temp = digits[index];
+        digits[index] = digits[9 - i];
+        digits[9 - i] = temp;
 
-        random_number = random_number * 10 + randomarray[i]; // Constructs the 4-digit random number.
-
+        random_number = random_number * 10 + randomarray[i];
     }
 
     printf("random number: %d\n", random_number);
@@ -29,9 +31,15 @@ int main() {
         int user_input;
         scanf("%d", &user_input);
 
+        // Check if user input is valid
+        if (user_input < 1000 || user_input > 9999) {
+            printf("Invalid input. Please enter a 4-digit number.\n");
+            continue;
+        }
+
         int user_array[4];
     
-        // convert user inpu to array
+        // Convert user input to array
         for (int i = 3; i >= 0; i--) {
             user_array[i] = user_input % 10;
             user_input /= 10;
@@ -39,7 +47,7 @@ int main() {
 
         int A = 0, B = 0;
 
-        // Calculate A (Correct Digits in Correct Positions) and B (Correct Digits in Wrong Positions)
+        // Calculate A and B
         for (int i = 0; i < 4; i++) {
             if (user_array[i] == randomarray[i]) {
                 A++;
@@ -56,6 +64,7 @@ int main() {
         printf("The result: %dA%dB\n", A, B);
 
         if (A == 4) {
+            printf("Congratulations! You guessed the number.\n");
             break;
         }
     }
