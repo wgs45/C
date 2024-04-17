@@ -1,48 +1,27 @@
 #include <stdio.h>
 
-int main(){
-    int arr[100000], t, count=0, x, y;
-    int hist[6][1000];
-    
-    // Initialize hist array
-    for(x=0; x<1000; x++){
-        for(y=0; y<6; y++){
-            hist[y][x] = ' ';
+int main() {
+    int histogram[5] = {0};
+    int num;
+
+    printf("Enter a sequence of numbers between 1 and 5 (press Ctrl+Z to end):\n");
+
+    // Read numbers and update histogram
+    while (scanf("%d", &num) != EOF) {
+        if (num >= 1 && num <= 5) {
+            histogram[num - 1]++;
         }
     }
 
-    // Read integers into arr
-    while( scanf("%d", &arr[count]) != EOF ){
-        count++;
-    }
-
-    int i=0;
-    int bucket[6] = {0};
-
-    // Count occurrences
-    for(i=0; i<count; i++){
-        t = arr[i];
-        bucket[t]++;
-    }
-
-    // Print counts
-    for(i=1; i<=5; i++){
-        printf("%d ", bucket[i]);
-    }
-    printf("\n");
-
-    // Print histogram
-    for(y=3; y>0; y--){
-        for(x=1; x<=5; x++){
-            if(bucket[x] >= y){
-                printf("*");
-            }else{
-                printf(" ");
-            }
+    // Display histogram
+    printf("\nHistogram:\n");
+    for (int i = 0; i < 5; ++i) {
+        for (int j = 0; j < histogram[i]; ++j) {
+            printf("＊");
         }
         printf("\n");
     }
+    printf("１２３４５\n");
 
     return 0;
 }
-
