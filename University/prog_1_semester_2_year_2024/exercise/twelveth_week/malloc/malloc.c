@@ -1,32 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// malloc => allocates memory dynamically. It takes the number of bytes to allocate as an argument and returns a pointer to the allocated memory block.
-
 int main() {
-    int n = 0, i = 0;
-    int *array;
-
-    printf("Input N value: ");
-    scanf("%d", &n);
+    int n = 0, m = 0, i = 0, *arr;
     
-    // malloc(byte), 1 byte = 8 bits
-    // (int *) => a typecast to convert the void pointer returned by malloc() to a pointer to an integer.
-    array = (int *) malloc (sizeof(int) * n);
-    if (array == NULL) {
-        printf("Cannot get memory!");
-        return 1;
+    printf("Enter N and M value (seperated with space): ");
+    scanf("%d %d", &n, &m);
+    arr = (int *) malloc (sizeof(int) * n);
+
+    for (i = 0; i < n; i++) {
+        arr[i] = i + 1;
     }
 
     for (i = 0; i < n; i++) {
-        array[i] = i * 2;
+        printf("%d ", arr[i]);
     }
-
-    for (i = 0; i < n; i++) {
-        printf("%d ", array[i]);
-    }
-
-    free(array); // to prevent memory leaks
+ 
+    printf("\n");
 
     return 0;
 }
