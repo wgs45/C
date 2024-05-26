@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+// find string occurences without using struct method
+
 int main() {
   char str[100];
 
