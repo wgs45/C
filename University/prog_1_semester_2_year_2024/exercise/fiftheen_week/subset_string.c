@@ -1,45 +1,38 @@
 #include <stdio.h>
 #include <string.h>
 
-void print_substring(char *input);
+void generate_subset(char *input, int index, char *current, int current_index);
 
 int main() {
   char input[100];
-  int i = 0, j = 0;
 
   printf("Enter a number: ");
   scanf("%s", input);
 
-  int len = strlen(input);
-
-  // check if input is a numeric string
-  for (i = 0; i < len; i++) {
-    if (input[i] < '0' || input[i] > '9') {
-      printf("Invalid input");
-      return 1;
-    }
-  }
-
-  printf("Output: ");
-  print_substring(input);
-  putchar('\n');
+  // temporary store subset
+  char temp[100];
+  printf("Output: \n");
+  generate_subset(input, 0, temp, 0);
 
   return 0;
 }
 
-void print_substring(char *input) {
-  int len = strlen(input);
-  int i = 0, j = 0, k = 0;
-
-  // iterate over all possible start position
-  for (i = 0; i < len; i++) {
-    // iterate over all possible end position
-    for (j = i; j < len; j++) {
-      // print substring from i to j
-      for (k = i; k <= j; k++) {
-        putchar(input[k]);
-      }
-      putchar(' ');
+void generate_subset(char *input, int index, char *current, int current_index) {
+  // If index reach the end of the input string
+  if (index == strlen(input)) {
+    // If current index is 0, return null
+    if (current_index == 0) {
+      printf("NULL\n");
+    } else {
+      current[current_index] = '\0';
+      printf("%s\n", current);
     }
+    return;
   }
+  // Include the current character
+  current[current_index] = input[index];
+  generate_subset(input, index + 1, current, current_index + 1);
+
+  // Exclude the current character
+  generate_subset(input, index + 1, current, current_index);
 }
