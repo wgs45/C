@@ -1,36 +1,35 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 
-int *generate_random_array(int size);
+int *generate_arr(int n);
 
 int main() {
-  srand(time(0));
+  srand(time(NULL));
 
-  int size = 0, i = 0;
-  printf("Enter the size of the array: ");
-  scanf("%d", &size);
+  int n = rand() % 20 + 1; // generate number from 1 to 20
+  int *arr = generate_arr(n);
+  int i = 0;
 
-  int *array = generate_random_array(size);
-
-  printf("Random array: ");
-  for (i = 0; i < size; i++) {
-    printf("%d ", array[i]);
+  for (i = 0; i < n; i++) {
+    printf("%d ", arr[i]);
   }
+
   printf("\n");
 
-  free(array);
+  free(arr);
 
   return 0;
 }
 
-int *generate_random_array(int size) {
+int *generate_arr(int n) {
   int i = 0;
+  int *arr = (int *)malloc(n * sizeof(int));
 
-  int *array = (int *)malloc(size * sizeof(int));
-  for (i = 0; i < size; i++) {
-    array[i] = rand() % 100; // generate random value between 0 and 99
+  for (i = 0; i < n; i++) {
+    arr[i] = rand() % 40;
   }
 
-  return array;
+  return arr;
 }
