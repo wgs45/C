@@ -31,7 +31,7 @@ int *generate_arr(int n) {
 
   // Fill the array with random values
   for (i = 0; i < n; i++) {
-    arr[i] = rand() % 40;
+    arr[i] = rand() % 40; // generate element value from between 0 to 39
   }
 
   return arr; // Return a pointer to the allocated memory
