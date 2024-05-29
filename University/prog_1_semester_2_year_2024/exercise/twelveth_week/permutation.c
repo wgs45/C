@@ -1,40 +1,50 @@
 #include <stdio.h>
-#include <string.h>
 
 void swap(char *a, char *b);
 void permutate(char *str, int left, int right);
 
 int main() {
-    int len = 0;
-    printf("Input len: ");
-    scanf("%d", &len);
+  int len = 0;
 
-    char input[len + 1];
-    printf("Enter a string: ");
-    scanf("%s", input);
+  printf("Enter len: ");
+  if (scanf("%d", &len) != 1 || len <= 0) {
+    printf("Invalid value\n");
+    return 1;
+  }
 
-    permutate(input, 0, len - 1);
+  // Declare a character array to hold the input string
+  char str[len + 1];
+  printf("Enter character: ");
+  scanf("%s", str);
 
-    return 0;
+  permutate(str, 0, len - 1);
+  printf("\n");
+
+  return 0;
 }
 
 void swap(char *a, char *b) {
-    char temp = *a;
-    *a = *b;
-    *b = temp;
+  char temp = *a;  // Use char instead of int for the temporary variable
+  *a = *b;
+  *b = temp;
 }
 
 void permutate(char *str, int left, int right) {
-    int i = 0;
+  int i = 0;
 
-    if (left == right) {
-        printf("%s ", str);
-        return;
-    }
+  // Base case: if left index is equal to right index, print the current permutation
+  if (right == left) {
+    printf("%s ", str);
+    return;
+  }
 
-    for (i = left; i <= right; i++) {
-        swap((str + left), (str + i));
-        permutate(str, left + 1, right);
-        swap((str + left), (str + i));
-    }
+  // Recursive case: generate permutations by swapping each character with the current position
+  for (i = left; i <= right; i++) {
+    // Swap the current character with the character at position left
+    swap(&str[left], &str[i]);
+    // Recursively generate permutations for the remaining characters
+    permutate(str, left + 1, right);
+    // Backtrack by swapping the characters back to their original positions
+    swap(&str[left], &str[i]);
+  }
 }
