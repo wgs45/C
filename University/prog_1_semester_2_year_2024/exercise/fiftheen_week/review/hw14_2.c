@@ -17,6 +17,6 @@ float power_n(int a, int b) {
     return a * power_n(a, b - 1); // Positive powers: multiply 'a'
   } else {
     return 1.0 /
-           power_n(a, -b); // Negative powers: reciprocal of positive power
+    power_n(a, -b); // Negative powers: reciprocal of positive power
   }
 }
