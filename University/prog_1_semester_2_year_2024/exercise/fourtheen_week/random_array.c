@@ -8,7 +8,7 @@ int *generate_arr(int n);
 int main() {
   srand(time(NULL)); // Seed the random number generator
 
-  int n = rand() % 20 + 1; // Generate a random number from 1 to 20
+  int n = rand() % 20 + 1; // Generate a random size number from 1 to 20
   int *arr = generate_arr(n); // Call the function to generate an array
   int i = 0;
 
